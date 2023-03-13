@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola mundo</h1>
+    <button onclick="execute()">Operación</button>
+
+<script>
+    function execute(){
+        console.log("Estoy con JavaScript")
+        
+        //const valor que no cambia 
+        //var variables globales
+        // let se recomienda
+        const fecha = Date();
+        let diaSemana = 1;
+        otravarible = "Hola"
+        //let diaSemana = 1;
+        // if(diaSemana == 1){
+        //     console.log("Dia de la semana", diaSemana, "=>",fecha)
+        // }
+
+        // if(!(diaSemana > 2)){
+        //     console.log("Dia de la semana", diaSemana, "=>",fecha)
+        // }else{
+        //     console.log("El dia de la semana no es mayor que 2")
+        // }
+
+        // if(!(10>5)){
+        //     console.log("10 es mayor que 5")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+
+        // if(10 >= 10){
+        //     console.log("10 es mayor o igual que 10")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+
+        // if(10 <= 10){
+        //     console.log("10 es menor o igual que 10")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+
+        // 1 = true
+        // 0 = false
+        // if(0 == false){
+        //     console.log("0 es igual a falso")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+        
+        //Los === compara si es igual, 0 y 1 valor numerico no booleano
+        //Validacion estricta
+        // if(0 === false){
+        //     console.log("0 es igual a falso")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+
+        // if(1 == true){
+        //     console.log("1 es igual a true")
+        // }else{
+        //     console.log("No ingreso al if")
+        // }
+        
+        // if((diaSemana)){
+        //     console.log("Valor diferente de null o false")
+        // }else{
+        //     console.log("No ingreso al if",otravarible)
+        // }
+
+        
+        // // 1  && otraVaribale!= null or false
+        // if((diaSemana == 1 && otravarible)){
+        //      console.log("Validacion condicion AND &&")
+        // }else{
+        //      console.log("No ingreso al if",otravarible)
+        // }
+
+        // 1  && !(otraVaribale!= null or false)
+        //!otravarible indica que es igual a false o a null
+        // if((diaSemana == 1 && !otravarible)){
+        //      console.log("Validacion condicion AND &&")
+        // }else{
+        //      console.log("No ingreso al if",otravarible)
+        // }
+
+        if((diaSemana == 1 || !otravarible)){
+             console.log("Validacion condicion OR ||")
+        }else{
+             console.log("No ingreso al if",otravarible)
+        }
+
+
+
+
+    }
+</script>
+</body>
+</html>
+
