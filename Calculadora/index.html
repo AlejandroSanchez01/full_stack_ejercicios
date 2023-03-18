@@ -7,28 +7,41 @@
     <title>Document</title>
 </head>
 <body>
+    <center>
+
+    
     <h1>Calculadora</h1>
     <br>
-    <input id="numeroA" type="number"> Número A</input>
+    <input id="numeroA" type="number" > Número A</input>
     <br>
     <br>
     <input id="numeroB" type="number"> Número B</input>
     <br>
     <br>
-    <button id="suma" onclick="suma()"> Suma (+) </button> 
+    <button id="suma" style='width:123px; height:22px' onclick="suma()"> Suma (+) </button> 
+    <button id="resta" style='width:123px; height:22px' onclick="resta()"> Resta (-) </button>     
+    <br>
+    <br>
+    <button id="division" style='width:123px; height:22px' onclick="division()"> Dividir (/) </button>
+    <button id="multiplicar" style='width:123px; height:22px' onclick="multiplicar()"> Multiplicar (*) </button>
+
     <h1>Resultado: </h1>
-    <input id="resultadoSuma"></input>
+ 
+    <input id="resultado"  style="text-align:center;" ></input>
+
+    
+    </center>
     <script>
         console.log("Ejecutando codigo JavaScript")
 
-        function suma(){
+        //Esta función permite ejecutar la función de suma
+        function suma()
+        {
             const valorA = document.getElementById("numeroA").value
             const valorB = document.getElementById("numeroB").value
-            let campoResultado = document.getElementById("resultadoSuma");
+            let campoResultado = document.getElementById("resultado");
 
             if(!valorA || !valorB ){
-                //!valorA || !valorB Si alguno es verdadero es decir diferente de null
-                //console.log("Valor null (sin datos)")
                 campoResultado.value = "Ingrese datos"
             }
             else{
@@ -38,21 +51,69 @@
                 console.log("Resultado -->",resultado)
                 campoResultado.value = resultado
             }
-
-            // if(valorA && valorB ){
-            //     const resultado= Number(valorA)+Number(valorB)
-            //     campoResultado.value = resultado
-            // }
-
-            //En JavaScript 1+2 = 12 los concatena
-            //Se debe colocar Number() para que los sume como numeros
-
-            // function setText(id,newValue){
-            //     var s = document.getElementById(id)
-            //     s.innerHTML = newValue;
-            // }
-            //setText("resultadoSuma","Falta Datos");
         }
+
+
+                //Esta función permite ejecutar la función de suma
+        function division()
+        {
+            const valorA = document.getElementById("numeroA").value
+            const valorB = document.getElementById("numeroB").value
+            let campoResultado = document.getElementById("resultado");
+
+            if(!valorA || !valorB ){
+                campoResultado.value = "Ingrese datos"
+            }
+            else{
+                if(valorB!=0){
+                const resultado= Number(valorA)/Number(valorB)
+                console.log("Valor A -->",valorA)
+                console.log("Valor B -->",valorB)    
+                console.log("Resultado -->",resultado)
+                campoResultado.value = resultado
+                }
+                else{
+                    campoResultado.value = "Division por cero"
+                }
+
+            }
+        }
+
+
+        //Esta función permite ejecutar la función de resta
+         function resta()
+        {
+            const valorA = document.getElementById("numeroA").value
+            const valorB = document.getElementById("numeroB").value
+            let campoResultado = document.getElementById("resultado");
+            if(!valorA || !valorB ){
+                campoResultado.value = "Ingrese datos"
+            }
+            else{
+                const resultado= Number(valorA)-Number(valorB)
+                campoResultado.value = resultado
+            }
+        }
+
+        function multiplicar()
+        {
+            const valorA = document.getElementById("numeroA").value
+            const valorB = document.getElementById("numeroB").value
+            let campoResultado = document.getElementById("resultado");
+
+            if(!valorA || !valorB ){
+                campoResultado.value = "Ingrese datos"
+            }
+            else{
+                const resultado= Number(valorA)*Number(valorB)
+                console.log("Valor A -->",valorA)
+                console.log("Valor B -->",valorB)    
+                console.log("Resultado -->",resultado)
+                campoResultado.value = resultado
+            }
+        }
+
+
     </script>
 </body>
 </html>

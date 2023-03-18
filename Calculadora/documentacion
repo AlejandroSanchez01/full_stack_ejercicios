@@ -3,3 +3,10 @@
 <input></input> Campo de entrada, para ingreso de datos
 <button></button> Boton
 Value se utiliza para setear datos por defecto
+
+GIT
+git init -> Iniciar un nuevo repositorio en un directorio
+git add -> Agregar archivos nuevos para el seguimiento en git y agregar a archivos existentes
+git commit -> Permite poner en firme o volver de forma oficial el nuevo o modificacion dentro del repositorio
+git push -> Subir cambios a la nube
+git pull -> Descargar cambios de la nube
