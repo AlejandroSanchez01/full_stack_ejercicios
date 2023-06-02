@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Usuarios</title>
+    <link rel="stylesheet" href="pagina_css.css">
+</head>
+<body>
+    <center>
+    <h1>Tabla de Usuarios</h1>    
+    <table>
+        <thead>
+            <tr>
+                <th>
+                <th>
+                <th>
+                <th><input type="text" id="buscar_todos" oninput="filtrar('todos')">
+            </tr>
+        </thead>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>
+                <th><input type="text" id="buscar_nombre" oninput="filtrar('nombre')">
+                <th><input type="text" id="buscar_apellido" oninput="filtrar('apellido')">
+                <th><input type="text" id="buscar_cedula" oninput="filtrar('cedula')">
+            </tr>
+        
+    </tbody>
+        <tbody id="tabla-filtros">
+            <!-- Aquí se agregarán las filas de la tabla -->
+        </tbody>
+    </table>
+    </center>
+
+
+    <script>
+        // Obtener los datos de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const datos = urlParams.get('datos');
+        
+        
+        // Decodificar los datos recibidos
+        const datosDecodificados = decodeURIComponent(datos);
+        
+        // Convertir los datos en un array de filas
+        const filas = datosDecodificados.split('<br>');
+        console.log(filas)
+
+        registros = []
+        filas.forEach((fila, index) => {
+            // Verificar si es el último elemento
+            if (index < filas.length - 1) {
+                const [id, nombre, apellido, cedula] = fila.split(',');
+                registros.push({ "id": id, "nombre": nombre, "apellido": apellido, "cedula": cedula });
+            }
+            });
+        console.log(registros)
+
+        function filtrar(categoria) {
+            
+            const tabla = document.getElementById("tabla-filtros");
+
+            // Limpiar la tabla antes de agregar los nuevos registros
+            tabla.innerHTML = "";
+            
+            switch (categoria){
+                case "nombre":
+                    
+                    filtro = document.getElementById("buscar_nombre").value.toLowerCase();
+                    
+                    filtro_apellido = document.getElementById("buscar_apellido");
+                    filtro_apellido.value = ""
+
+                    filtro_cedula = document.getElementById("buscar_cedula");
+                    filtro_cedula.value = ""
+
+                    filtro_todos = document.getElementById("buscar_todos")
+                    filtro_todos.value = ""
+
+                    // Filtrar los registros que coinciden con el filtro
+                    registrosFiltrados = registros.filter(registro =>
+                            //registro.nombre.toLowerCase().startsWith(filtro)
+                            registro.nombre.toLowerCase().includes(filtro)
+                        );
+                        break;
+                case "apellido":
+
+                    filtro = document.getElementById("buscar_apellido").value.toLowerCase();
+                    
+                    filtro_nombre = document.getElementById("buscar_nombre");
+                    filtro_nombre.value = ""
+
+                    filtro_cedula = document.getElementById("buscar_cedula");
+                    filtro_cedula.value = ""
+
+                    filtro_todos = document.getElementById("buscar_todos") 
+                    filtro_todos.value = ""
+
+                    registrosFiltrados = registros.filter(registro =>
+                        //registro.apellido.toLowerCase().startsWith(filtro)
+                        registro.apellido.toLowerCase().includes(filtro)
+                    );
+                    break;
+                
+                case "cedula":
+
+                    filtro = document.getElementById("buscar_cedula").value.toLowerCase();    
+                    
+                    filtro_nombre = document.getElementById("buscar_nombre");
+                    filtro_nombre.value = ""
+
+                    filtro_apellido = document.getElementById("buscar_apellido");
+                    filtro_apellido.value = ""
+                    
+                    filtro_todos = document.getElementById("buscar_todos")
+                    filtro_todos.value = ""
+
+                    registrosFiltrados = registros.filter(registro =>
+                            //registro.cedula.toLowerCase().startsWith(filtro)
+                            registro.cedula.toLowerCase().includes(filtro)
+                        );
+                    break;   
+                
+                case "todos":
+                    filtro = document.getElementById("buscar_todos").value.toLowerCase();    
+                        
+                    filtro_nombre = document.getElementById("buscar_nombre");
+                    filtro_nombre.value = ""
+
+                    filtro_apellido = document.getElementById("buscar_apellido");
+                    filtro_apellido.value = ""
+
+                    filtro_cedula = document.getElementById("buscar_cedula");
+                    filtro_cedula.value = ""
+
+                    // registrosFiltrados = registros.filter(registro =>
+                    //     registro.nombre.toLowerCase().startsWith(filtro) ||
+                    //     registro.apellido.toLowerCase().startsWith(filtro) ||
+                    //     registro.cedula.toLowerCase().startsWith(filtro) 
+                    // );
+                    registrosFiltrados = registros.filter(registro =>
+                        registro.cedula.toLowerCase().includes(filtro) ||
+                        registro.nombre.toLowerCase().includes(filtro) ||
+                        registro.apellido.toLowerCase().includes(filtro)
+                    );
+                    break;
+
+                default:
+                        console.log("Operación no válida"); 
+            }
+
+            // Agregar los registros filtrados a la tabla
+            registrosFiltrados.forEach(registro => {
+                const nuevaFila = document.createElement("tr");
+
+                const celdaId = document.createElement("td");
+                centerElement = document.createElement("center");
+                centerElement.textContent = registro.id;
+                celdaId.appendChild(centerElement);
+                nuevaFila.appendChild(celdaId);
+                     
+                const celdaNombre = document.createElement("td");
+                centerElement = document.createElement("center");
+                centerElement.textContent = registro.nombre;
+                celdaNombre.appendChild(centerElement);
+                nuevaFila.appendChild(celdaNombre);
+
+                const celdaApellido = document.createElement("td");
+                centerElement = document.createElement("center");
+                centerElement.textContent = registro.apellido;
+                celdaApellido.appendChild(centerElement);
+                nuevaFila.appendChild(celdaApellido);
+
+                const celdaCedula = document.createElement("td");
+                centerElement = document.createElement("center");
+                centerElement.textContent = registro.cedula;
+                celdaCedula.appendChild(centerElement);
+                nuevaFila.appendChild(celdaCedula);
+
+                tabla.appendChild(nuevaFila);
+            });
+        }
+</script>
+</body>
+</html>

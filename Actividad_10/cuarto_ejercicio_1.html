@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+</head>
+<body>
+    <center>
+        <h1>Información</h1>
+        <br>
+        <input id="nacimiento" type="date" max="" oninput="actualizarResultado()"> Nacimiento
+        <br>
+        <br>
+        <h1>Resultado: </h1>
+        
+        <input id="resultado" class="resultado">
+        <style>
+        .resultado{
+          width:50%
+        }
+        </style>
+    </center>
+    <script>
+        const inputFecha = document.getElementById("nacimiento");
+        const resultado = document.getElementById("resultado");
+
+        // Obtener la fecha actual en el formato requerido por el campo de fecha
+        const fechaActual = new Date().toISOString().split("T")[0];
+        // Establecer la fecha actual como valor máximo en el campo de fecha
+        inputFecha.max = fechaActual;
+
+        console.log("Ejecutando código JavaScript");
+
+        function actualizarResultado() {
+            const nacimiento = document.getElementById("nacimiento").value;
+            const fechaNacimiento = new Date(nacimiento);
+            const edadMilisegundos = Date.now() - fechaNacimiento.getTime();
+            const edad = new Date(edadMilisegundos).getFullYear() - 1970;
+
+            if (edad < 18) {
+                resultado.value = "Su edad es: " + edad + " por tanto: No es mayor de edad";
+            } else {
+                    resultado.value = "Su edad es: " + edad + " por tanto: Es mayor de edad";
+            }
+        }
+    </script>
+</body>
+</html>

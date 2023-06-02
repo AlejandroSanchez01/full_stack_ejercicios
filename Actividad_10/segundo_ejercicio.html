@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 123px;
+            height: 22px;
+            margin-bottom: 10px;
+        }
+
+        #resultado {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Información</h1>
+        <br>
+        <input id="edad" type="number" oninput="actualizarResultado()"> Edad
+        <br>
+        <br>
+        <h1>Resultado: </h1>
+        <input id="resultado">
+    </center>
+    <script>
+        console.log("Ejecutando código JavaScript");
+        function actualizarResultado(){
+            edad = document.getElementById("edad").value;
+            resultado = document.getElementById("resultado");
+            resultado.value = edad
+            if(edad<18)
+            {
+            resultado.value = "Es menor de edad";
+            }  
+            else
+            {
+              resultado.value = "Es mayor de edad"
+            }
+			}
+    </script>
+</body>
+</html>

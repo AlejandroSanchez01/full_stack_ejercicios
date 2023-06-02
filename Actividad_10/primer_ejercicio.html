@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 123px;
+            height: 22px;
+            margin-bottom: 10px;
+        }
+
+        #resultado {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Calculadora</h1>
+        <br>
+        <input id="numeroA" type="number"> Número A
+        <br>
+        <br>
+        <input id="numeroB" type="number"> Número B
+        <br>
+        <br>
+        <button onclick="operacion('suma')"> Suma (+) </button> 
+        <button id="resta" onclick="operacion('resta')"> Resta (-) </button>     
+        <br>
+        <br>
+        <button id="division" onclick="operacion('dividir')"> Dividir (/) </button>
+        <button id="multiplicar" onclick="operacion('multiplicar')"> Multiplicar (*) </button>
+        <br>
+        <br>
+        <h1>Resultado: </h1>
+        <input id="resultado">
+    </center>
+    <script>
+        console.log("Ejecutando código JavaScript");
+
+        function operacion(id) {
+            const valorA = document.getElementById("numeroA").value;
+            const valorB = document.getElementById("numeroB").value;
+            let campoResultado = document.getElementById("resultado");
+
+            if (!valorA || !valorB) {
+                campoResultado.value = "Ingrese datos";
+            } else {
+                switch (id) {
+                    case "suma":
+                        campoResultado.value = Number(valorA) + Number(valorB);
+                        break;
+                    case "resta":
+                        campoResultado.value = Number(valorA) - Number(valorB);
+                        break;
+                    case "dividir":
+                        if (valorB != 0) {
+                            campoResultado.value = Number(valorA) / Number(valorB);
+                        } else {
+                            campoResultado.value = "División por cero";
+                        }
+                        break;
+                    case "multiplicar":
+                        campoResultado.value = Number(valorA) * Number(valorB);
+                        break;
+                    default:
+                        console.log("Operación no válida");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

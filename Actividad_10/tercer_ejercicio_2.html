@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otra Página</title>
+</head>
+<body>
+    <h1>Datos recibidos:</h1>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const nombre = urlParams.get('nombre');
+        const apellido = urlParams.get('apellido');
+        const cedula = urlParams.get('cedula');
+        console.log("Datos recibidos:"+ 
+        "\nNombre: "+nombre+
+        "\nApellido: "+apellido+
+        "\nCedula: "+cedula)    
+        document.write('<p>Nombre: ' + nombre + '</p>');
+        document.write('<p>Apellido: ' + apellido + '</p>');
+        document.write('<p>Número de Cédula: ' + cedula + '</p>');
+    </script>
+</body>
+</html>

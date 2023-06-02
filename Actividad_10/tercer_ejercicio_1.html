@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <h1>Ingrese sus datos</h1>
+    <form action="tercer_ejercicio_2.html" method="GET" id="myForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+        <br><br>
+        <label for="cedula">Número de Cédula:</label>
+        <input type="text" id="cedula" name="cedula" required>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Cancelar el envío del formulario por defecto
+
+            // Obtener los valores de los campos
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const cedula = document.getElementById("cedula").value;
+            
+            // Imprimir los datos en la consola
+            console.log("Datos enviados:");
+            console.log("Nombre: " + nombre);
+            console.log("Apellido: " + apellido);
+            console.log("Cédula: " + cedula);
+            
+
+            // Enviar el formulario
+            this.submit();
+
+            
+        });
+    </script>
+</body>
+</html>
+
