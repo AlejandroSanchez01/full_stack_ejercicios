@@ -1,0 +1,151 @@
+/*CREACION TABLAS*/
+
+
+/*TABLA USUARIOS*/
+create table usuarios(
+id_usuario int not null primary key,
+nick VARCHAR(50) not null,
+nombre VARCHAR(50) not null,
+apellidos VARCHAR(100) not null,
+email VARCHAR(100) not null,
+password VARCHAR(100) not null
+);
+
+/*TABLA LISTAS_REPRODUCCIONES*/
+CREATE TABLE listas_reproducciones (
+id_lista INT not null primary key,
+nombre VARCHAR(100) not null,
+id_usuario_ INT not null,
+foreign key (id_usuario_) references usuarios(id_usuario)
+);
+
+/*TABLA CANCIONES*/
+CREATE TABLE canciones (
+id_cancion INT not null primary key,
+genero VARCHAR(50) not null,
+autor VARCHAR(100) not null,
+titulo VARCHAR(100) not null,
+fecha DATE not null,
+duracion DECIMAL(8,2) not null,
+bitrate DECIMAL(8,2)  not null,
+id_lista_ INT not null,
+foreign key (id_lista_) references listas_reproducciones (id_lista)
+);
+
+
+/*EJEMPLOS INSERT TABLA USUARIOS*/
+
+insert into usuarios (id_usuario,nick,nombre,apellidos,email,password)
+values (1,"Pepe","Felipe","Gonzalez","pepe@gmail.com","P3P3@113");
+
+insert into usuarios (id_usuario,nick,nombre,apellidos,email,password)
+values (2,"Lu","Luisa","Morales","lu@gmail.com","LU_896#");
+
+insert into usuarios (id_usuario,nick,nombre,apellidos,email,password)
+values (3,"Lau","Laura","Linares","Lau@gmail.com","Lau$2031&");
+
+insert into usuarios (id_usuario,nick,nombre,apellidos,email,password)
+values (4,"Drako","Alejandro","Sanchez","alejo@gmail.com","Drak$%2983@");
+
+insert into usuarios (id_usuario,nick,nombre,apellidos,email,password)
+values (5,"Agus","Agustin","Bueno","agus@gmail.com","Agu$2021_123");
+
+
+/*EJEMPLOS INSERT TABLA LISTAS_REPRODUCCIONES*/
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (1,"Música Clásica",1);
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (2,"Salsa Romántica",1);
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (3,"Musica Pop en inglés",3);
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (4,"Reggaeton Viejo",2);
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (5,"Electronica",4);
+
+insert into listas_reproducciones (id_lista,nombre,id_usuario_)
+values (6,"Música Cristiana",4);
+
+/*EJEMPLOS INSERT TABLA CANCIONES*/
+
+insert into canciones (id_cancion, genero, autor, titulo, fecha, duracion, bitrate, id_lista_)
+values (1, 'musica clásica', 'Ludwig van Beethoven', 'Sinfonía No. 5 en Do Menor', STR_TO_DATE('1808-04-01', '%Y-%m-%d'), 30.0, 320.0, 1);
+
+insert into canciones (id_cancion, genero, autor, titulo, fecha, duracion, bitrate, id_lista_)
+values (2, 'Pop', 'Taylor Swift', 'Shake It Off', STR_TO_DATE('2014-08-18', '%Y-%m-%d'), 3.39, 320, 3);
+
+insert into canciones (id_cancion, genero, autor, titulo, fecha, duracion, bitrate, id_lista_)
+values (3, 'Reguetón', 'Daddy Yankee', 'Gasolina', STR_TO_DATE('2004-07-13', '%Y-%m-%d'), 3.49, 256, 4);
+
+insert into canciones (id_cancion, genero, autor, titulo, fecha, duracion, bitrate, id_lista_)
+values (4, 'Electrónica', 'Daft Punk', 'Around the World', STR_TO_DATE('1997-03-17', '%Y-%m-%d'), 7.08, 320, 5);
+
+insert into canciones (id_cancion, genero, autor, titulo, fecha, duracion, bitrate, id_lista_)
+values (5, 'Música Cristiana', 'Hillsong Worship', 'What a Beautiful Name', STR_TO_DATE('2016-10-14', '%Y-%m-%d'), 5.43, 192, 6);
+
+
+/*EJEMPLOS UPDATE TABLA USUARIOS*/
+
+update usuarios 
+set apellidos = "Duarte"
+where id_usuario = 5
+
+update usuarios 
+set password = "TFVfODk2Iw=="
+where nick = "Lu"
+
+
+
+/*EJEMPLOS UPDATE TABLA LISTAS_REPRODUCCIONES*/
+
+update listas_reproducciones 
+set nombre = "Música Electronica!!!"
+where id_lista  = 5
+
+update listas_reproducciones 
+set nombre = "Gospel Music <3"
+where nombre  = "Música Cristiana"
+
+/*EJEMPLOS UPDATE TABLA CANCIONES*/
+
+update canciones 
+set autor = 'Wolfgang Amadeus Mozart',
+titulo = 'Sinfonía No. 40 en Sol menor',
+fecha = STR_TO_DATE('1788-07-25', '%Y-%m-%d'),
+duracion = 25.16,
+bitrate =  320
+where id_cancion  = 1
+
+
+/*CONSULTA INNER JOIN*/
+select *
+from usuarios as u
+inner join listas_reproducciones as ls on u.id_usuario = ls.id_usuario_
+where ls.id_usuario_  is not null
+
+/*CONSULTA COUNT*/
+
+select count(*) as numero_usuarios
+from usuarios
+where length (password)>=10
+
+/*CONSULTA ORDER BY*/
+
+select *
+from canciones
+where fecha >='2000-01-01'
+order by fecha desc;
+
+
+/*CONSULTA BETWEEN*/
+
+select *
+from canciones
+where duracion between 2 and 4;
+
+
